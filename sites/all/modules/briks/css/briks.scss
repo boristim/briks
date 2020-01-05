@@ -1,0 +1,35 @@
+html {
+  body {
+    #briks-calc-form {
+      font-family: 'Roboto Light', sans-serif;
+      .form-item-b-height,
+      .form-item-b-length,
+      .form-item-b-width,
+      .form-item-price,
+      .form-item-voidness,
+      .form-item-weight {
+        display: none;
+      }
+      select,
+      input{
+        font-family: 'Roboto Light', sans-serif;
+      }
+      ul {
+        li {
+          list-style: none;
+          padding: 5px 0;
+          display: table-row;
+
+          span {
+            display: table-cell;
+            padding: 0 5px;
+            &.value {
+              font-weight: bold;
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

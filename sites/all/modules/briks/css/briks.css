@@ -1,0 +1,30 @@
+html body #briks-calc-form {
+  font-family: "Roboto Light", sans-serif;
+}
+html body #briks-calc-form .form-item-b-height,
+html body #briks-calc-form .form-item-b-length,
+html body #briks-calc-form .form-item-b-width,
+html body #briks-calc-form .form-item-price,
+html body #briks-calc-form .form-item-voidness,
+html body #briks-calc-form .form-item-weight {
+  display: none;
+}
+html body #briks-calc-form select,
+html body #briks-calc-form input {
+  font-family: "Roboto Light", sans-serif;
+}
+html body #briks-calc-form ul li {
+  list-style: none;
+  padding: 5px 0;
+  display: table-row;
+}
+html body #briks-calc-form ul li span {
+  display: table-cell;
+  padding: 0 5px;
+}
+html body #briks-calc-form ul li span.value {
+  font-weight: bold;
+  text-align: right;
+}
+
+/*# sourceMappingURL=briks.css.map */

@@ -1,0 +1,72 @@
+
+I	php:S1135ƒ"4Complete the task associated to this "TODO" comment.(øœ­
+j	php:S3776‹="TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(…¼
+P	php:S1481±,":Remove this unused "$main_content_display" local variable.(ƒ©€
+j	php:S3776"TRefactor this function to reduce its Cognitive Complexity from 43 to the 15 allowed.(û‘ƒß
+D	php:S1125Õ")Remove the literal "FALSE" boolean value.(Ôš›°ÿÿÿÿÿ
+e	php:S1142„"OReduce the number of returns of this function 8, down to the maximum allowed 3.(şá“Ñ
+o	php:S3776ª;"TRefactor this function to reduce its Cognitive Complexity from 29 to the 15 allowed.(æô¼åùÿÿÿÿ
+j	php:S3776×B"TRefactor this function to reduce its Cognitive Complexity from 22 to the 15 allowed.(ºÔ×õ
+J	php:S1135¶"4Complete the task associated to this "TODO" comment.(–€ş¸
+™php:S138š"ƒThis function "drupal_http_request" has 234 lines, which is greater than the 150 lines authorized. Split it into smaller functions.(²¢«º
+Gphp:S836À;"2Review the data-flow - use of uninitialized value.(¥ÕË‰
+<	php:S1110É="!Remove these useless parentheses.(›ú‚‡øÿÿÿÿ
+h	php:S1301½"MReplace this "switch" statement with "if" statements to increase readability.(ú«áÆıÿÿÿÿ
+Qphp:S131µ"7Add a "case default" clause to this "switch" statement.(ú«áÆıÿÿÿÿ
+i	php:S3776Ç$"TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(ÈĞ²A
+j	php:S3776‰"TRefactor this function to reduce its Cognitive Complexity from 32 to the 15 allowed.(Ù¤’Œ
+I	php:S1135‹?"4Complete the task associated to this "TODO" comment.(™°°m
+o	php:S3776¨"TRefactor this function to reduce its Cognitive Complexity from 27 to the 15 allowed.(¾ëöÖøÿÿÿÿ
+j	php:S3776š"TRefactor this function to reduce its Cognitive Complexity from 69 to the 15 allowed.(²¢«º
+e	php:S1142Ç"OReduce the number of returns of this function 4, down to the maximum allowed 3.(ñ¶Æõ
+`php:S112¤B"FDefine and throw a dedicated exception instead of using a generic one.(›„˜âıÿÿÿÿ
+J	php:S3801„"4Refactor this function to use "return" consistently.(şá“Ñ
+O	php:S3801É"4Refactor this function to use "return" consistently.(àÙÖ“úÿÿÿÿ
+Lphp:S131¿#"7Add a "case default" clause to this "switch" statement.(²Ö¼
+i	php:S3776Ä"TRefactor this function to reduce its Cognitive Complexity from 42 to the 15 allowed.(şŞ†
+o	php:S3776Ù+"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(µÛ¯œúÿÿÿÿ
+j	php:S1142¢"OReduce the number of returns of this function 7, down to the maximum allowed 3.(›…µ‰üÿÿÿÿ
+i	php:S3776«/"TRefactor this function to reduce its Cognitive Complexity from 37 to the 15 allowed.(³ùí0
+o	php:S3776—("TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(æü»”ùÿÿÿÿ
+J	php:S1066¾("/Merge this if statement with the enclosing one.(¶ÀŸšûÿÿÿÿ
+_	php:S3358Ö"DExtract this nested ternary operation into an independent statement.(ÎôÍûÿÿÿÿ
+\	php:S1075ı"ARefactor your code to get this URI from a customizable parameter.(¤ÂÜıÿÿÿÿ
+o	php:S3776¯!"TRefactor this function to reduce its Cognitive Complexity from 18 to the 15 allowed.(“ò›öûÿÿÿÿ
+W	php:S1075²("ARefactor your code to get this URI from a customizable parameter.(ŸÕ”ö
+y	php:S1488ñ"cImmediately return this expression instead of assigning it to the temporary variable "$identifier".(§ñŸ§
+w	php:S1488›"aImmediately return this expression instead of assigning it to the temporary variable "$contents".(æ´¸Ø
+z	php:S1488à"_Immediately return this expression instead of assigning it to the temporary variable "$output".(¤‹Šüÿÿÿÿ
+j	php:S3776ë"TRefactor this function to reduce its Cognitive Complexity from 38 to the 15 allowed.(ÉÜ
+?	php:S1481¯@")Remove this unused "$vid" local variable.(Œ©ª›
+Qphp:S131Í"7Add a "case default" clause to this "switch" statement.(¾‘ò»úÿÿÿÿ
+?	php:S1125†")Remove the literal "FALSE" boolean value.(Êò¥‘
+o	php:S3776Ä*"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(³›½üÿÿÿÿ
+J	php:S1135Ş?"4Complete the task associated to this "TODO" comment.(ıÔØä
+_	php:S3358”"DExtract this nested ternary operation into an independent statement.(éØªıÿÿÿÿ
+j	php:S3776Ú="TRefactor this function to reduce its Cognitive Complexity from 28 to the 15 allowed.(ÈÄ«Ô
+J	php:S3801À9"4Refactor this function to use "return" consistently.(ëå²•
+Qphp:S131½"7Add a "case default" clause to this "switch" statement.(ú«áÆıÿÿÿÿ
+j	php:S3776Ç"TRefactor this function to reduce its Cognitive Complexity from 56 to the 15 allowed.(ñ¶Æõ
+o	php:S3776Ì"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(Èù›¶ÿÿÿÿÿ
+aphp:S107æ'"GThis function has 8 parameters, which is greater than the 7 authorized.(™ê™Œùÿÿÿÿ
+E	php:S1066±"/Merge this if statement with the enclosing one.(öÁ„§
+Qphp:S131„"7Add a "case default" clause to this "switch" statement.(Ÿ¢€ùÿÿÿÿÿ
+Lphp:S131€"7Add a "case default" clause to this "switch" statement.(²Ö¼
+?	php:S1125§")Remove the literal "FALSE" boolean value.(¬íı
+d	php:S1142«/"OReduce the number of returns of this function 5, down to the maximum allowed 3.(³ùí0
+e	php:S1142Ï"OReduce the number of returns of this function 5, down to the maximum allowed 3.(½ë„
+e	php:S1142š"OReduce the number of returns of this function 7, down to the maximum allowed 3.(²¢«º
+J	php:S1066‰"/Merge this if statement with the enclosing one.(½÷îüÿÿÿÿ
+Gphp:S836À;"2Review the data-flow - use of uninitialized value.(¥ÕË‰
+?	php:S1125É!")Remove the literal "FALSE" boolean value.(É‹­À
+J	php:S1135Ø&"4Complete the task associated to this "TODO" comment.(„¨Ô¨
+E	php:S1066‘"/Merge this if statement with the enclosing one.(öÁ„§
+L	php:S1599¾;"1Remove the use of this variable variable "$$var".(ÁÀŒ‡ûÿÿÿÿ
+s	php:S1488ı5"]Immediately return this expression instead of assigning it to the temporary variable "$null".(¼ì²À
+z	php:S1488ğ"_Immediately return this expression instead of assigning it to the temporary variable "$output".(ŸÓ¡öúÿÿÿÿ
+php:S138¬6"ƒThis function "drupal_common_theme" has 194 lines, which is greater than the 150 lines authorized. Split it into smaller functions.(ñºÄ‚ıÿÿÿÿ
+>	php:S1481¯@"(Remove this unused "$id" local variable.(Œ©ª›
+j	php:S3776À9"TRefactor this function to reduce its Cognitive Complexity from 54 to the 15 allowed.(ëå²•
+h	php:S1301­"MReplace this "switch" statement with "if" statements to increase readability.(ÃÈß¿øÿÿÿÿ
+Gphp:S836À;"2Review the data-flow - use of uninitialized value.(¥ÕË‰
+j	php:S3776‘#"TRefactor this function to reduce its Cognitive Complexity from 39 to the 15 allowed.(ªı±Ï

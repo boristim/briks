@@ -1,0 +1,202 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function briks_menu() {
+
+  $items['briks/calculator'] = [
+    'title callback' => '_briks_entity_label',
+    'page callback' => '_briks_page_view',
+    'access arguments' => ['access content'],
+    'type' => MENU_CALLBACK,
+  ];
+
+  $items['briks/ajax'] = [
+    'page callback' => '_briks_ajax',
+    'access arguments' => ['access content'],
+    'type' => MENU_CALLBACK,
+  ];
+
+  return $items;
+}
+
+function _briks_page_view() {
+  return drupal_get_form('briks_calc_form');
+}
+
+
+function briks_calc_form($form, &$form_state) {
+
+  $form['result'] = ['#markup' => '<div id="briks_calc_result"></div>'];
+  $form['sizes'] = [
+    '#type' => 'select',
+    '#title' => 'Размеры',
+    '#options' => Briks::sizesOptions(),
+    '#default_value' => 0,
+  ];
+  $form['b_height'] = [
+    '#type' => 'textfield',
+    '#title' => 'Высота',
+    '#attributes' => [
+      ' type' => 'number',
+      'min' => 0,
+      'step' => 1,
+      'readonly' => 'readonly',
+      'class' => ['hidden'],
+    ],
+//    '#suffix' => 'мм',
+  ];
+  $form['b_width'] = [
+    '#type' => 'textfield',
+    '#title' => 'Ширина',
+    '#attributes' => [
+      ' type' => 'number',
+      'min' => 0,
+      'step' => 1,
+      'readonly' => 'readonly',
+    ],
+//    '#suffix' => 'мм',
+  ];
+  $form['b_length'] = [
+    '#type' => 'textfield',
+    '#title' => 'Длина',
+    '#attributes' => [
+      ' type' => 'number',
+      'min' => 0,
+      'step' => 1,
+      'readonly' => 'readonly',
+
+    ],
+//    '#suffix' => 'мм',
+  ];
+
+  $form['weight'] = [
+    '#type' => 'textfield',
+    '#title' => 'Вес',
+    '#attributes' => [
+      ' type' => 'number',
+      'min' => 0,
+      'step' => 0.1,
+      'readonly' => 'readonly',
+
+    ],
+//    '#suffix' => 'кг',
+    '#default_value' => 3.6,
+  ];
+
+  $form['perimeter'] = [
+    '#type' => 'textfield',
+    '#title' => 'Периметр',
+    '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 0.01],
+    '#suffix' => 'метров',
+    '#default_value' => 30,
+  ];
+
+  $form['height'] = [
+    '#type' => 'textfield',
+    '#title' => 'Высота',
+    '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 1],
+    '#suffix' => 'см',
+    '#default_value' => 300,
+  ];
+
+  $form['wall_depth'] = [
+    '#type' => 'select',
+    '#title' => 'Толщина стен',
+    '#options' => Briks::wallThinknesOptions(),
+    '#default_value' => '0.5',
+  ];
+
+  $form['seam_depth'] = [
+    '#type' => 'select',
+    '#title' => 'Толщина раствора',
+    '#options' => Briks::seamThinknesOptions(),
+    '#suffix' => 'мм',
+    '#default_value' => 10,
+  ];
+
+  $form['wall_grid'] = [
+    '#type' => 'select',
+    '#title' => 'Кладочная сетка',
+    '#options' => Briks::wallGridThinknesOptions(),
+    '#default_value' => 4,
+  ];
+
+  $form['price'] = [
+    '#type' => 'textfield',
+    '#title' => 'Стоимость',
+    '#attributes' => [
+      ' type' => 'number',
+      'min' => 0,
+      'step' => 0.01,
+      'readonly' => 'readonly',
+    ],
+//    '#suffix' => 'руб',
+    '#default_value' => 0,
+  ];
+
+  $form['voidness'] = [
+    '#type' => 'textfield',
+    '#title' => 'Пустотность',
+    '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 0.01],
+//    '#suffix' => '%',
+    '#default_value' => 0,
+  ];
+
+
+  $form['js'] = [
+    '#markup' => '<script>' . Briks::sizesJs() . '</script>',
+  ];
+  $form['#attached']['css'][] = drupal_get_path('module', 'briks') . '/css/briks.css';
+  $form['#attached']['js'][] = drupal_get_path('module', 'briks') . '/js/briks.js';
+
+  $form['actions']['submit'] = [
+    '#type' => 'submit',
+    '#value' => 'Расчитать',
+    '#submit' => ['briks_calc_form_submit'],
+  ];
+  return $form;
+}
+
+function briks_calc_form_submit($form, &$form_state) {
+  Briks::emulateQuery($form_state['values']);
+}
+
+function _briks_entity_label() {
+  return t('Briks calculator');
+}
+
+function _briks_ajax() {
+  $ret = [
+    'res' => Briks::emulateQuery($_POST),
+  ];
+  drupal_add_http_header('Content-Type', 'application/json');
+  print drupal_json_encode($ret);
+  drupal_exit();
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function briks_block_info() {
+  return ['briks_form_block' => ['info' => 'Форма расчета кирпичей']];
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * @param string $delta
+ *
+ * @return array
+ */
+function briks_block_view($delta = '') {
+  if ($delta == 'briks_form_block') {
+    return [
+      'subject' => '',
+//      'subject' => _briks_entity_label(),
+      'content' => drupal_get_form('briks_calc_form'),
+    ];
+  }
+}
+
