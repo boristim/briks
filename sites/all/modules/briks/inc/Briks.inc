@@ -302,8 +302,6 @@ JS;
       round(self::$vals['perimeter'] * 100 * $wall_width / $total_mass / 30, 2),
       'кг/см.кв.',
     ];
-
     return $ret;
   }
-
 }
