@@ -3,7 +3,6 @@ description = Briks calculator
 version = "7.x-0.1"
 core = "7.x"
 package = "Briks"
-dependencies[] = file
-dependencies[] = variable
+dependencies[] = unload_bricks
 files[] = inc/Briks.inc
 
