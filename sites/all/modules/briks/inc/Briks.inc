@@ -191,14 +191,13 @@ JS;
       'dv_S2' => 0,
     ];
     $ch = curl_init();
-    $params = [
+    curl_setopt_array($ch, [
       CURLOPT_URL => self::STROY_CALC,
       CURLOPT_POST => 1,
       CURLOPT_POSTFIELDS => ['u' => http_build_query($params)],
       CURLOPT_RETURNTRANSFER => TRUE,
       CURLOPT_SSL_VERIFYPEER => FALSE,
-    ];
-    curl_setopt_array($ch, $params);
+    ]);
     self::$response = curl_exec($ch);
     curl_close($ch);
     return self::parseResponse();
@@ -208,7 +207,7 @@ JS;
     self::$vals = $vals;
     return self::myCalc();
     // OR STROY CALC
-//    return self::stroyCalc();
+    return self::stroyCalc();
   }
 
   private static function myCalc() {
@@ -303,4 +302,5 @@ JS;
     ];
     return $ret;
   }
+
 }
