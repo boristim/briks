@@ -144,8 +144,8 @@ JS;
 
   private static function parseResponse() {
     $res = [];
-    if (preg_match_all('/<tr>(.*)<\/tr>/isU', self::$response, $matches, PREG_SET_ORDER)) {
-      foreach ($matches as $row) {
+    if (preg_match_all('/<tr>(.*)<\/tr>/isU', self::$response, $trs, PREG_SET_ORDER)) {
+      foreach ($trs as $row) {
         if (preg_match_all('/<td>(.*)<\/td>/isU', $row[1], $tds, PREG_SET_ORDER)) {
           $res_row = [];
           foreach ($tds as $td) {
@@ -190,12 +190,11 @@ JS;
       'dv_h2' => 0,
       'dv_S2' => 0,
     ];
-    $post = ['u' => http_build_query($params)];
     $ch = curl_init();
     $params = [
       CURLOPT_URL => self::STROY_CALC,
       CURLOPT_POST => 1,
-      CURLOPT_POSTFIELDS => $post,
+      CURLOPT_POSTFIELDS => ['u' => http_build_query($params)],
       CURLOPT_RETURNTRANSFER => TRUE,
       CURLOPT_SSL_VERIFYPEER => FALSE,
     ];
