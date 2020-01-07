@@ -1,6 +1,6 @@
 (function ($) {
       Drupal.behaviors.briks = {
-        attach: function (context) {
+        attach: function () {
           $('#briks-calc-form').submit(function () {
             let self = $(this);
             $.ajax({
@@ -13,11 +13,11 @@
                 let html = '<ul>';
                 $.each(data.res, function (k, v) {
                   html += '<li><span class="label">' + v[0] + '</span><span class="value">' + v[1] + '</span><span class="ei">' + v[2] + '</span></li>';
-                })
+                });
                 html += '</ul>';
                 $('#briks_calc_result').html(html);
               }
-            })
+            });
             return false;
           })
         }
