@@ -145,6 +145,7 @@ function briks_calc_form($form, &$form_state) {
   ];
 
   $form['apertures'] = [
+
     '#type' => 'fieldset',
     '#title' => 'Окна и двери',
     '#collapsible' => TRUE,
