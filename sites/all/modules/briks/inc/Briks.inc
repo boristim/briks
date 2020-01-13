@@ -174,21 +174,21 @@ JS;
       'klr' => $vals['wall_grid'],
       'cena' => $vals['price'],
       'pust' => $vals['voidness'],
-      'kfr' => 0,
-      'vfr' => 0,
-      'shfr' => 0,
-      'ok_v' => 0,
-      'ok_h' => 0,
-      'ok_S' => 0,
-      'dv_v' => 0,
-      'dv_h' => 0,
-      'dv_S' => 0,
-      'ok_v2' => 0,
-      'ok_h2' => 0,
-      'ok_S2' => 0,
-      'dv_v2' => 0,
-      'dv_h2' => 0,
-      'dv_S2' => 0,
+      'kfr' => $vals['gabel_count'],
+      'vfr' => $vals['gabel_height'],
+      'shfr' => $vals['gabel_width'],
+      'ok_v' => $vals['window_height'],
+      'ok_h' => $vals['window_width'],
+      'ok_S' => $vals['window_count'],
+      'dv_v' => $vals['door_height'],
+      'dv_h' => $vals['door_width'],
+      'dv_S' => $vals['door_count'],
+      'ok_v2' => $vals['window_height_2'],
+      'ok_h2' => $vals['window_width_2'],
+      'ok_S2' => $vals['window_count_2'],
+      'dv_v2' => $vals['door_height_2'],
+      'dv_h2' => $vals['door_width_2'],
+      'dv_S2' => $vals['door_count_2'],
     ];
     $ch = curl_init();
     curl_setopt_array($ch, [
@@ -207,7 +207,7 @@ JS;
     self::$vals = $vals;
     return self::myCalc();
     // OR STROY CALC
-    return self::stroyCalc();
+//    return self::stroyCalc();
   }
 
   private static function myCalc() {
