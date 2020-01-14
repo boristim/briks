@@ -208,10 +208,10 @@ JS;
 
   public static function emulateQuery($vals) {
     self::$vals = $vals;
-    if($vals['calc_switch'] == 1){
+    if ($vals['calc_switch'] == 1) {
       return self::myCalc();
     }
-    else{
+    else {
       return self::stroyCalc();
     }
   }
