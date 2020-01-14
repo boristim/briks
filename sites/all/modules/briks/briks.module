@@ -302,6 +302,7 @@ function _briks_entity_label() {
 }
 
 function _briks_ajax() {
+  drupal_page_is_cacheable(FALSE);
   $ret = [
     'res' => Briks::emulateQuery($_POST),
   ];
