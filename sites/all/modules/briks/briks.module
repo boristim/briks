@@ -273,6 +273,13 @@ function briks_calc_form($form, &$form_state) {
     ],
   ];
 
+  $form['calc_switch'] = [
+    '#type' => 'radios',
+    '#title' => 'Метод расчета',
+    '#default_value' => 1,
+    '#options' => [1 => 'Внутренний', 2 => 'Внешний'],
+  ];
+
   $form['js'] = [
     '#markup' => '<script>' . Briks::sizesJs() . '</script>',
   ];
