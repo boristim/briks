@@ -214,7 +214,6 @@ JS;
     else{
       return self::stroyCalc();
     }
-
   }
 
   private static function myCalc() {

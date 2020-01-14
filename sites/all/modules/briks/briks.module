@@ -272,7 +272,6 @@ function briks_calc_form($form, &$form_state) {
       ],
     ],
   ];
-
   $form['calc_switch'] = [
     '#type' => 'radios',
     '#title' => 'Метод расчета',
