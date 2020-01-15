@@ -52,23 +52,7 @@ JS;
     return self::$sizesJsPrices . $calcJs;
   }
 
-  private static function sizes() {
-
-    $query = db_query("Select nid from {node} where type='brick' and status = 1");
-    if ($query->rowCount()) {
-      while ($row = $query->fetchAssoc()) {
-        $brick = node_load($row['nid']);
-        $ret[$brick->title] = [
-          'length' => $brick->field_length[LANGUAGE_NONE][0]['value'],
-          'width' => $brick->field_width[LANGUAGE_NONE][0]['value'],
-          'height' => $brick->field_height[LANGUAGE_NONE][0]['value'],
-          'weight' => $brick->field_weight[LANGUAGE_NONE][0]['value'],
-          'price' => $brick->field_price[LANGUAGE_NONE][0]['value'],
-        ];
-      }
-      return $ret;
-    }
-
+  private static function sizesPreconfigured() {
     $ret['Одинарный кирпич 1НФ'] = [
       'length' => 250,
       'width' => 120,
@@ -118,6 +102,33 @@ JS;
       'price' => 15,
       'weight' => 3.6,
     ];
+    return $ret;
+  }
+
+  private static function sizesDatabse() {
+    $ret = FALSE;
+    $query = db_query("Select nid from {node} where type='brick' and status = 1");
+    if ($query->rowCount()) {
+      $ret = [];
+      while ($row = $query->fetchAssoc()) {
+        $brick = node_load($row['nid']);
+        $ret[$brick->title] = [
+          'length' => $brick->field_length[LANGUAGE_NONE][0]['value'],
+          'width' => $brick->field_width[LANGUAGE_NONE][0]['value'],
+          'height' => $brick->field_height[LANGUAGE_NONE][0]['value'],
+          'weight' => $brick->field_weight[LANGUAGE_NONE][0]['value'],
+          'price' => $brick->field_price[LANGUAGE_NONE][0]['value'],
+        ];
+      }
+
+    }
+    return $ret;
+  }
+
+  private static function sizes() {
+    if (!$ret = self::sizesDatabse()) {
+      $ret = self::sizesPreconfigured();
+    }
     return $ret;
   }
 
@@ -230,20 +241,23 @@ JS;
 
     switch (self::$vals['wall_depth']) {
       case 3:
+        $brick_wall_width = 2 * self::$vals['b_length'];
         $wall_width = 2 * (self::$vals['b_length'] + $seam);
         $seam_per_break_area = self::$vals['b_length'] * 1.7 * $seam;
         break;
       case 2:
+        $brick_wall_width = self::$vals['b_length'] + self::$vals['b_width'];
         $wall_width = self::$vals['b_length'] + $seam + self::$vals['b_width'];
         $seam_per_break_area = self::$vals['b_length'] * (3.5 / 3) * $seam;
         break;
       case 1:
+        $brick_wall_width = self::$vals['b_length'];
         $wall_width = self::$vals['b_length'];
         $seam_per_break_area = self::$vals['b_length'] * (0.9) * $seam;
         break;
       case 0:
       default:
-        $wall_width = self::$vals['b_width'];
+        $brick_wall_width = $wall_width = self::$vals['b_width'];
         $seam_per_break_area = self::$vals['b_width'] * (1.4) * $seam;
     }
     self::$wall_width = $wall_width;
@@ -280,7 +294,7 @@ JS;
     $ret[] = ['Периметр строения', self::$vals['perimeter'], 'м.'];
     $ret[] = [
       'Общая площадь кладки',
-      round($total_area / 1000000,2),
+      round($total_area / 1000000, 2),
       'м.кв.',
     ];
     $ret[] = ['Толщина стены', $wall_width, 'мм.'];
