@@ -27,6 +27,11 @@ function _briks_page_view() {
 
 
 function briks_calc_form($form, &$form_state) {
+  $form['actions']['submit'] = [
+    '#type' => 'submit',
+    '#value' => 'Расчитать',
+    '#submit' => ['briks_calc_form_submit'],
+  ];
 
   $form['result'] = ['#markup' => '<div id="briks_calc_result"></div>'];
   $form['sizes'] = [
@@ -89,6 +94,7 @@ function briks_calc_form($form, &$form_state) {
     '#title' => 'Периметр',
     '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 0.01],
     '#suffix' => '<div class="suffix">метров</div>',
+    //    '#default_value' => 1,
     '#default_value' => 30,
   ];
 
@@ -97,6 +103,7 @@ function briks_calc_form($form, &$form_state) {
     '#title' => 'Высота',
     '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 1],
     '#suffix' => '<div class="suffix">см</div>',
+    //    '#default_value' => 100,
     '#default_value' => 300,
   ];
 
@@ -182,6 +189,7 @@ function briks_calc_form($form, &$form_state) {
         '#type' => 'textfield',
         '#title' => 'Высота окна',
         '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 1],
+        //        '#default_value' => 100,
         '#default_value' => 0,
         '#suffix' => '<div class="suffix">см</div>',
       ],
@@ -189,6 +197,7 @@ function briks_calc_form($form, &$form_state) {
         '#type' => 'textfield',
         '#title' => 'Ширина окна',
         '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 1],
+        //        '#default_value' => 100,
         '#default_value' => 0,
         '#suffix' => '<div class="suffix">см</div>',
       ],
@@ -196,6 +205,7 @@ function briks_calc_form($form, &$form_state) {
         '#type' => 'textfield',
         '#title' => 'Количество окон',
         '#attributes' => [' type' => 'number', 'min' => 0, 'step' => 1],
+        //        '#default_value' => 1,
         '#default_value' => 0,
         '#suffix' => '<div class="suffix">шт</div>',
       ],
@@ -285,7 +295,7 @@ function briks_calc_form($form, &$form_state) {
   $form['#attached']['css'][] = drupal_get_path('module', 'briks') . '/css/briks.css';
   $form['#attached']['js'][] = drupal_get_path('module', 'briks') . '/js/briks.js';
 
-  $form['actions']['submit'] = [
+  $form['actions_bottom']['submit'] = [
     '#type' => 'submit',
     '#value' => 'Расчитать',
     '#submit' => ['briks_calc_form_submit'],

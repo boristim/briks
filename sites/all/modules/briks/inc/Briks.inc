@@ -14,6 +14,8 @@ class Briks {
 
   private static $row_height = 0;
 
+  private static $apertures_area = 0;
+
   public static function sizesOptions() {
     $sizes = [];
     self::$sizesJsPrices = 'function brick_prices(npp){';
@@ -218,8 +220,9 @@ JS;
 
   private static function myCalc() {
     $ret = [];
+    $seam_mass = 1900;
     $seam = self::$vals['seam_depth'] * 10;
-
+    self::$apertures_area = 0;
     self::$row_height = $row_height = self::$vals['b_height'] + $seam;
     $rows = ceil((self::$vals['height'] * 10) / $row_height);
 
@@ -244,38 +247,40 @@ JS;
         $seam_per_break_area = self::$vals['b_width'] * (1.4) * $seam;
     }
     self::$wall_width = $wall_width;
-    $seam_mass = 1900;
-    $corner_area = ($wall_width ^ 2) / 2;
-    $break_per_row = (self::$vals['perimeter'] * 1000 * $wall_width) / ($seam_per_break_area + $brick_area);
+
+    $total_area = (self::$vals['perimeter'] * 1000 * self::$vals['height'] * 10);
     $brick_volume = $brick_area * self::$vals['b_height'];
-    $per_corner = $corner_area / $brick_area;
-    $total_briks = floor(($rows * $break_per_row) - ($per_corner * 4));
+    $briks_total_volume = (self::$vals['perimeter'] * 1000 * $wall_width * self::$vals['height'] * 10);
+    $total_briks = ceil($briks_total_volume / ($brick_volume + ($seam_per_break_area * self::$vals['b_height']) + ($brick_area * $seam)));
     $apertures_volume = self::calcApertures(self::$vals['window_width'] * 10, self::$vals['window_height'] * 10, self::$vals['window_count'])
       + self::calcApertures(self::$vals['door_width'] * 10, self::$vals['door_height'] * 10, self::$vals['door_count'])
       + self::calcApertures(self::$vals['window_width_2'] * 10, self::$vals['window_height_2'] * 10, self::$vals['window_count_2'])
       + self::calcApertures(self::$vals['door_width_2'] * 10, self::$vals['door_height_2'] * 10, self::$vals['door_count_2']);
 
-    $apertures_brick_count = $apertures_volume / ($brick_volume + $seam_per_break_area);
+    $apertures_brick_count = ceil($apertures_volume / ($brick_volume + ($seam_per_break_area * self::$vals['b_height']) + ($brick_area * $seam)));
     $apertures_seam_volume = $apertures_brick_count * $seam_per_break_area;
     $row_area = $wall_width * self::$vals['perimeter'] * 1000;
     $total_seam_volume = ($row_area * $seam * $rows) + ($seam_per_break_area * self::$vals['b_height'] * $total_briks);
-    $gabel_area = 0;
+    $total_briks -= ceil($apertures_brick_count);
+
+
+    $total_area -= self::$apertures_area;
     if ((self::$vals['gabel_count'] * self::$vals['gabel_height'] * self::$vals['gabel_width']) > 0) {
       $gabel_area = self::$vals['gabel_count'] * 10 * self::$vals['gabel_height'] * 10 * self::$vals['gabel_width'] / 2;
       $gabels_volume = $gabel_area * self::$wall_width;
       $gabels_brick_count = $gabels_volume / ($brick_volume + $seam_per_break_area);
-
       $total_briks += $gabels_brick_count;
       $gabels_seam_volume = $gabels_brick_count * $seam_per_break_area;
       $total_seam_volume += $gabels_seam_volume;
+      $total_area -= ($gabel_area / 1000000);
     }
 
-    $total_briks -= ceil($apertures_brick_count);
+
     $total_seam_volume -= $apertures_seam_volume;
     $ret[] = ['Периметр строения', self::$vals['perimeter'], 'м.'];
     $ret[] = [
       'Общая площадь кладки',
-      (self::$vals['perimeter'] * self::$vals['height'] / 100) + ($gabel_area / 1000000),
+      round($total_area / 1000000,2),
       'м.кв.',
     ];
     $ret[] = ['Толщина стены', $wall_width, 'мм.'];
@@ -340,6 +345,7 @@ JS;
   private static function calcApertures($width, $height, $count) {
 
     if (($width * $width * $count) > 0) {
+      self::$apertures_area += $width * $height * $count;
       return $width * $height * $count * self::$wall_width;
     }
     return 0;
