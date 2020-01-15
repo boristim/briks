@@ -313,8 +313,10 @@ function _briks_entity_label() {
 
 function _briks_ajax() {
   drupal_page_is_cacheable(FALSE);
+  $content = file_get_contents("php://input");
+  parse_str($content, $content);
   $ret = [
-    'res' => Briks::emulateQuery($_POST),
+    'res' => Briks::emulateQuery($content),
   ];
   drupal_add_http_header('Content-Type', 'application/json');
   print drupal_json_encode($ret);
