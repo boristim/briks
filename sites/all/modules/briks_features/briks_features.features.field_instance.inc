@@ -2,13 +2,13 @@
 
 /**
  * @file
- * brick_features.features.field_instance.inc
+ * briks_features.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function brick_features_field_default_field_instances() {
+function briks_features_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance: 'node-brick-field_height'.

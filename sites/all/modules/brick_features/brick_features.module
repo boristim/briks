@@ -1,8 +1,0 @@
-<?php
-
-/**
- * @file
- * Code for the brick_features feature.
- */
-
-include_once 'brick_features.features.inc';
