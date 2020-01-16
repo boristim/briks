@@ -2,13 +2,13 @@
 
 /**
  * @file
- * briks_features.features.menu_custom.inc
+ * briks_f2.features.menu_custom.inc
  */
 
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function briks_features_menu_default_menu_custom() {
+function briks_f2_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: management.

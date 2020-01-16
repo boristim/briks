@@ -2,13 +2,13 @@
 
 /**
  * @file
- * briks_features.views_default.inc
+ * briks_f2.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function briks_features_views_default_views() {
+function briks_f2_views_default_views() {
   $export = array();
 
   $view = new view();
@@ -52,7 +52,13 @@ function briks_features_views_default_views() {
   $handler->display->display_options['header']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['header']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['header']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="/node/add/brik?destination=/admin/briks">Добавить кирпич</a>';
+  $handler->display->display_options['header']['area_text_custom']['content'] = '<a href="/node/add/brick?destination=/admin/briks">Добавить кирпич</a>';
+  /* Поведение при отсутствии результатов: Глобальный: Нефильтруемый текст */
+  $handler->display->display_options['empty']['area_text_custom']['id'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['table'] = 'views';
+  $handler->display->display_options['empty']['area_text_custom']['field'] = 'area_text_custom';
+  $handler->display->display_options['empty']['area_text_custom']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area_text_custom']['content'] = '<a href="/node/add/brick?destination=/admin/briks">Добавить кирпич</a>';
   /* Поле: Содержимое: Заголовок */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -167,7 +173,7 @@ function briks_features_views_default_views() {
     t('‹ предыдущая'),
     t('следующая ›'),
     t('последняя »'),
-    t('<a href="/node/add/brik?destination=/admin/briks">Добавить кирпич</a>'),
+    t('<a href="/node/add/brick?destination=/admin/briks">Добавить кирпич</a>'),
     t('Заголовок'),
     t('Длина'),
     t('Ширина'),

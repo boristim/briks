@@ -2,20 +2,20 @@
 
 /**
  * @file
- * briks_features.features.inc
+ * briks_f2.features.inc
  */
 
 /**
  * Implements hook_views_api().
  */
-function briks_features_views_api($module = NULL, $api = NULL) {
+function briks_f2_views_api($module = NULL, $api = NULL) {
   return array("api" => "3.0");
 }
 
 /**
  * Implements hook_node_info().
  */
-function briks_features_node_info() {
+function briks_f2_node_info() {
   $items = array(
     'brick' => array(
       'name' => t('Кирпич'),

@@ -1,7 +1,7 @@
-name = briks_features
+name = briks_f2
 core = 7.x
 package = Features
-version = 7.x-1.0
+version = 7.x-0.2
 dependencies[] = features
 dependencies[] = menu
 dependencies[] = node
