@@ -1,8 +1,0 @@
-<?php
-
-/**
- * @file
- * Code for the briks_f2 feature.
- */
-
-include_once 'briks_f2.features.inc';

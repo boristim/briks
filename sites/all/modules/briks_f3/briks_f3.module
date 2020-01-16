@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the briks_f3 feature.
+ */
+
+include_once 'briks_f3.features.inc';

@@ -2,13 +2,13 @@
 
 /**
  * @file
- * briks_f2.features.field_base.inc
+ * briks_f3.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function briks_f2_field_default_field_bases() {
+function briks_f3_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_height'.

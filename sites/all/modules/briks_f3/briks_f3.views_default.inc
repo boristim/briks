@@ -2,13 +2,13 @@
 
 /**
  * @file
- * briks_f2.views_default.inc
+ * briks_f3.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function briks_f2_views_default_views() {
+function briks_f3_views_default_views() {
   $export = array();
 
   $view = new view();

@@ -2,13 +2,13 @@
 
 /**
  * @file
- * briks_f2.features.menu_links.inc
+ * briks_f3.features.menu_links.inc
  */
 
 /**
  * Implements hook_menu_default_menu_links().
  */
-function briks_f2_menu_default_menu_links() {
+function briks_f3_menu_default_menu_links() {
   $menu_links = array();
 
   // Exported menu link: management_:admin/config/briks.
