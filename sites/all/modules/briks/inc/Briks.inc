@@ -285,7 +285,7 @@ JS;
       $gabels_volume = $gabel_area * self::$wall_width;
       $gabels_brick_count = floor($gabels_volume / ($brick_volume + $seam_per_break_area));
       $total_briks += $gabels_brick_count;
-      $total_area -= ($gabel_area / 1000000);
+      $total_area += ($gabel_area );
       $grid_length += self::$vals['gabel_count'] * $gabel_grid;
     }
 
